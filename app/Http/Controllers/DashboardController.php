@@ -27,7 +27,11 @@ class DashboardController extends Controller {
         $data['unseen_notifications'] = '0';
 
  
-        $data['configurations'] = $this->data['configurations'];
+        $data['config'] = $this->data['config'];
+        
+        
+//        d($data);
+//        
         $data['home'] = view('dashboard.home', $data);
         return view('dashboard.master', $data);
     }
@@ -38,7 +42,7 @@ class DashboardController extends Controller {
     public function settings() {
         $data = array();
         $data['title'] = 'Settings';
-        $data['settings'] = $this->data['configurations'];
+        $data['config'] = $this->data['config'];
         $data['home'] = view('dashboard.settings', $data);
         return view('dashboard.master', $data);
     }

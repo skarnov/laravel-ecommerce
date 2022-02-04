@@ -15,13 +15,17 @@ class Controller extends BaseController {
         ValidatesRequests;
 
     public function __construct() {
-        $config = Configuration::all();
-
-        foreach ($config as $value) {
+        foreach (Configuration::all() as $value) {
             $configurations[$value->config_name] = $value->config_setting;
         }
 
-        $this->data['configurations'] = $configurations;
+        $this->data['config'] = $configurations;
+        
+        
+        
+        
+        
+        
 
         /* Set Time Zone */
         date_default_timezone_set($configurations['time_zone']);

@@ -12,7 +12,7 @@
  */
 /* 001. Code Debug */
 
-function debug($data) {
+function d($data) {
     echo '<pre>';
     print_r($data);
     exit();
