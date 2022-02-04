@@ -15,7 +15,7 @@ class Notifications extends Migration {
         Schema::create('notifications', function (Blueprint $table) {
             $table->bigIncrements('notification_id');
             $table->string('notification_title', 50);
-            $table->text('notification_link');
+            $table->text('notification_link')->nullable();
             $table->text('notification');
             $table->enum('view_status', array('seen', 'unseen'))->default('unseen');
             $table->time('created_time');
