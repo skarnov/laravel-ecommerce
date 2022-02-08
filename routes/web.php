@@ -48,7 +48,9 @@ Route::get('/', function () {
 
 
 Route::get('dashboard-login', 'App\Http\Controllers\DashboardLogin@index');
-Route::post('dashboard-login-check', 'App\Http\Controllers\DashboardLogin@check');
+Route::post('dashboard-login-check', 'App\Http\Controllers\DashboardLogin@check')
+        ->middleware(['throttle:adminForm'])
+        ->name('dashboard.auth');
 Route::get('dashboard', 'App\Http\Controllers\DashboardController@index')->middleware('DashboardLogin');
 //Route::get('dashboard', 'App\Http\Controllers\DashboardController@index')->middleware('DashboardLogin');
 //Route::get('settings', 'App\Http\Controllers\DashboardController@settings');

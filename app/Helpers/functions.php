@@ -73,18 +73,26 @@ function time_elapsed_string($datetime, $full = false) {
 
 /* 006. User IP */
 
-function user_ip() {
-    if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
-        //ip from share internet
-        $ip = $_SERVER['HTTP_CLIENT_IP'];
-    } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-        //ip pass from proxy
-        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
-    } else {
-        $ip = $_SERVER['REMOTE_ADDR'];
+if (!function_exists('getUserIpAddr')) {
+
+    function getUserIpAddr() {
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            //ip from share internet
+            $ip = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            //ip pass from proxy
+            $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $ip = $_SERVER['REMOTE_ADDR'];
+        }
+        return $ip;
     }
-    return $ip;
+
 }
+
+
+
+
 
 /* 007. IP Info */
 
